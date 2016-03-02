@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset=utf-8 />
+  <meta name="viewport" content="width=device-width"/>
+  <title>Pixels</title>
+  <link rel="stylesheet" type="text/css" href="css/master.css" />
+</head>
+<body>
+  <img src="img/pixels.jpg" width="1024px" height="681px" />
+</body>
+</html>
+
+<script type="text/javascript" src="js/jquery-1.12.0.min.js"></script>
+<script type="text/javascript" src="js/pixel-flow.js"></script>
+<script type="text/javascript">
+//Wait for the page to load...
+$(window).load(function() {
+
+  var counter = 60;
+  
+  //initialize the pixelated image
+  var pixel = $('img').first().PixelFlow({resolution : counter});
+
+  //create our loop for depixelation...
+  var pixelLoop = setInterval( function() {
+
+    //deplixelate...
+    pixel.PixelFlow('simpleanimate', counter--, 1000);
+    //render...
+    $("img").prop("src", pixel + '?' + Math.random());
+
+    //stop loop to prevent negative iterations and exit setTimeout returning the last image of the interation...
+    if (counter == 0) {
+        clearInterval(pixelLoop);
+	return $("img").prop("src", pixel + '?' + Math.random());
+    }
+
+  }, 1000);
+
+});
+</script>
