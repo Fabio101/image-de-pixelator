@@ -7,7 +7,7 @@
   <link rel="stylesheet" type="text/css" href="css/master.css" />
 </head>
 <body>
-  <img src="img/pixels.jpg" width="1024px" height="681px" />
+    <img src="img/pixels.jpg" id="full-screen-background-image" alt=""/>
 </body>
 </html>
 
@@ -17,7 +17,7 @@
 //Wait for the page to load...
 $(window).load(function() {
 
-  var counter = 60;
+  var counter = 100;
   
   //initialize the pixelated image
   var pixel = $('img').first().PixelFlow({resolution : counter});
@@ -36,7 +36,7 @@ $(window).load(function() {
 	return $("img").prop("src", pixel + '?' + Math.random());
     }
 
-  }, 1000);
+  }, 100);
 
 });
 </script>
